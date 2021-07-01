@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block title %}Arm-Control{% endblock %} {% block content %}
+<style>
+    table,
+    th,
+    td {
+        border: 3px solid #04AA6D;
+    }
+</style>
+<div style="float:left;">
+    <h2 align=center>Robot Control</h2>
+    <form name="armForm" method="post">
+        <table width="20%" bgcolor="04AA6D" align="center">
+
+            <tr style="text-align:center">
+                <td>
+                    <b>Base</b>:
+                    <td><input id="Base" style="width: 3em" type="number" name="Base_Angle" placeholder="Base Angle" value=0></td>
+                </td>
+            </tr>
+            <tr style="text-align:center">
+                <td>
+                    <b>Lower Shoulder</b>:
+                    <td><input id="LS" style="width: 3em" type="number" name="LS_Angle" placeholder="Base Angle" value=0></td>
+                </td>
+
+            </tr>
+            <tr style="text-align:center">
+                <td>
+                    <b>Upper Shoulder</b>:
+                    <td><input id="US" style="width: 3em" type="number" name="US_Angle" placeholder="Base Angle" value=0></td>
+                </td>
+            </tr>
+            <tr style="text-align:center">
+                <td>
+                    <b>Gripper:</b>:
+                    <td><input id="Open" type="submit" value="Open" name='action'></td>
+                </td>
+                <td>
+                    <td><input id="Close" type="submit" value="Close" name='action'></td>
+                </td>
+            </tr>
+            <tr style="text-align:center">
+                <td>
+                    <b>Submit</b>:
+                    <td><input id='move' type="submit" onclick="return check(this.form)" value="Move" name='action'></td>
+                </td>
+            </tr>
+            <script>
+                var inputText = document.getElementById("US");
+                inputText.addEventListener("keyup", function(event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById("move").click();
+                    }
+                });
+            </script>
+            <script>
+                var inputText = document.getElementById("LS");
+                inputText.addEventListener("keyup", function(event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById("move").click();
+                    }
+                });
+            </script>
+            <script>
+                var inputText = document.getElementById("Base");
+                inputText.addEventListener("keyup", function(event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault();
+                        document.getElementById("move").click();
+                    }
+                });
+            </script>
+        </table>
+    </form>
+</div>
+<div>
+    <h1>Streaming </h1>
+    <img src="{{ url_for('work.video_feed') }}">
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Sensors{% endblock %} {% block content %}
+<style>
+    table,
+    th,
+    td {
+        border: 3px solid #04AA6D;
+    }
+</style>
+<h2 align=center>Sensors Readings and Calibration</h2>
+<form name="SensorsForm" method="post">
+    <table style="width:100%">
+        <tr>
+            <th>SENSOR</th>
+            <th>READING</th>
+
+        </tr>
+        <tr align=center>
+            <td> <b>Temperature</b></td>
+            <td>{{Temperature}}</td>
+
+        </tr>
+        <tr align=center>
+            <td> <b>Humidity</b></td>
+            <td>{{Humidity}}</td>
+
+        </tr>
+        <tr align=center>
+            <td> <b>Soil Moisture</b></td>
+            <td>{{Soil_Moisture}}</td>
+
+        </tr>
+        <tr align=center>
+            <td> <b>Lighting</b></td>
+            <td>{{Lighting}}</td>
+
+        </tr>
+        <tr align=center>
+            <td><b>Refresh</b></td>
+            <td> <button onClick="window.location.reload();">Refresh</button></td>
+
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
