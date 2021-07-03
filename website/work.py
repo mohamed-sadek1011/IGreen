@@ -95,19 +95,19 @@ def move():
             ser.write(b'base_l')
             sleep(0.1)
             return ('', 204)
-        elif request.form['L_action'] == 'Forward':
+        elif request.form['action'] == 'L-Forward':
             ser.write(b'ls_f')
             sleep(0.1)
             return ('', 204)
-        elif request.form['L_action'] == 'Backwards':
+        elif request.form['action'] == 'L-Backwards':
             ser.write(b'ls_b')
             sleep(0.1)
             return ('', 204)
-        elif request.form['U_action'] == 'Forward':
+        elif request.form['action'] == 'U-Forward':
             ser.write(b'us_f')
             sleep(0.1)
             return ('', 204)
-        elif request.form['U_action'] == 'Backwards':
+        elif request.form['action'] == 'U-Backwards':
             ser.write(b'us_b')
             sleep(0.1)
             return ('', 204)
