@@ -117,6 +117,7 @@ def move():
             sleep(0.01)
             ser.write(bytes(FanSpeed,'utf-8'))
             sleep(0.1)
+            return ('', 204)
         elif request.form['action'] == 'Water':
             WaterTime = str(request.form.get('Water_Time'))
             ser.write(b'pumb')
