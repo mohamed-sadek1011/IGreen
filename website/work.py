@@ -12,13 +12,15 @@ ser = serial.Serial("/dev/ttyS0",9600)
 
 work = Blueprint('work', __name__)
 
+
+
 def gen():
     """Video streaming generator function."""
-    thres = 0.45 # Threshold to detect object
     cap = cv2.VideoCapture(0)
-    cap.set(3,1280)
-    cap.set(4,720)
-    cap.set(10,70)
+    thres = 0.45 # Threshold to detect object
+    #cap.set(3,1280)
+    #cap.set(4,720)
+   # cap.set(10,70)
 
     classNames= []
     classFile = 'coco.names'
@@ -34,13 +36,13 @@ def gen():
     net.setInputMean((127.5, 127.5, 127.5))
     net.setInputSwapRB(True)
 
-    # Read until video is completed
+    #Read until video is completed
     while(cap.isOpened()):
-      # Capture frame-by-frame
+        #Capture frame-by-frame
         ret, img = cap.read()
         img = cv2.flip(img,1)
         classIds, confs, bbox = net.detect(img,confThreshold=thres)
-        #print(classIds,bbox)
+       # print(classIds,bbox)
         if len(classIds) != 0:
             for classId, confidence,box in zip(classIds.flatten(),confs.flatten(),bbox):
                 cv2.rectangle(img,box,color=(0,255,0),thickness=2)
@@ -86,20 +88,20 @@ def move():
             sleep(0.1)
             return ('', 204)
         elif request.form['action'] == 'Move':
-            BaseAngle = request.form.get('Base_Angle')
-            LsAngle = request.form.get('LS_Angle')
-            UsAngle = request.form.get('US_Angle')
+            BaseAngle = str(request.form.get('Base_Angle'))
+            LsAngle = str(request.form.get('LS_Angle'))
+            UsAngle = str(request.form.get('US_Angle'))
             ser.write(b'base')
             sleep(0.01)
-            ser.write(BaseAngle.encode)
+            ser.write(bytes(BaseAngle,'utf-8'))
             sleep(0.1)
             ser.write(b'ls')
             sleep(0.01)
-            ser.write(LsAngle.encode())
+            ser.write(bytes(LsAngle,'utf-8'))
             sleep(0.1)
             ser.write(b'us')
             sleep(0.01)
-            ser.write(UsAngle.encode())
+            ser.write(bytes(UsAngle,'utf-8'))
             sleep(0.1)
             return ('', 204)
     elif request.method == 'GET':
