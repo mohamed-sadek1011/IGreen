@@ -13,26 +13,44 @@
 
             <tr style="text-align:center">
                 <td>
-                    <b>Base</b>:
-                    <td><input id="Base" style="width: 3em" type="number" name="Base_Angle" placeholder="Base Angle" value=0></td>
+                    <b>Base:</b>
+                </td>
+                <td><input id="Base" style="width: 3em" type="number" name="Base_Angle" placeholder="Base Angle" value=0></td>
+                <td>
+                    <td><input id="Left" type="submit" value="Left" name='action'></td>
+                </td>
+                <td>
+                    <td><input id="Right" type="submit" value="Right" name='action'></td>
                 </td>
             </tr>
             <tr style="text-align:center">
                 <td>
-                    <b>Lower Shoulder</b>:
-                    <td><input id="LS" style="width: 3em" type="number" name="LS_Angle" placeholder="Base Angle" value=0></td>
+                    <b>Lower Shoulder:</b></td>
+                <td><input id="LS" style="width: 3em" type="number" name="LS_Angle" placeholder="Base Angle" value=0></td>
+                <td>
+                    <td><input id="L_Forward" type="submit" value="Forward" name='action'></td>
                 </td>
-
+                <td>
+                    <td><input id="L_Backwards" type="submit" value="Backwards" name='action'></td>
+                </td>
             </tr>
             <tr style="text-align:center">
                 <td>
-                    <b>Upper Shoulder</b>:
-                    <td><input id="US" style="width: 3em" type="number" name="US_Angle" placeholder="Base Angle" value=0></td>
+                    <b>Upper Shoulder:</b>
+                </td>
+                <td><input id="US" style="width: 3em" type="number" name="US_Angle" placeholder="Base Angle" value=0></td>
+                <td>
+                    <td><input id="U_Forward" type="submit" value="Forward" name='action'></td>
+                </td>
+                <td>
+                    <td><input id="U_Backwards" type="submit" value="Backwards" name='action'></td>
                 </td>
             </tr>
             <tr style="text-align:center">
                 <td>
                     <b>Gripper:</b>:
+                    <td></td>
+                    <td></td>
                     <td><input id="Open" type="submit" value="Open" name='action'></td>
                 </td>
                 <td>
@@ -41,8 +59,29 @@
             </tr>
             <tr style="text-align:center">
                 <td>
-                    <b>Submit</b>:
-                    <td><input id='move' type="submit" onclick="return check(this.form)" value="Move" name='action'></td>
+                    <b>Submit angels:</b></td>
+                </td>
+                <td></td>
+                <td></td>
+                <td><input id='move' type="submit" onclick="return check(this.form)" value="Move" name='action'></td>
+
+            </tr>
+            <tr style="text-align:center">
+                <td>
+                    <b>Fan Speed:</b>
+                </td>
+                <td><input id="FanSpeed" style="width: 3em" type="number" name="Fan_Speed" placeholder="Fan Speed" value=0></td>
+                <td>
+                    <td><input id="Fan_Submit" type="submit" value="Submit" name='action'></td>
+                </td>
+            </tr>
+            <tr style="text-align:center">
+                <td>
+                    <b>Water Soil:</b>
+                </td>
+                <td><input id="WaterTime" style="width: 3em" type="number" name="Water_Time" placeholder="Water Time" value=0></td>
+                <td>
+                    <td><input id="Water_Submit" type="submit" value="Water" name='action'></td>
                 </td>
             </tr>
             <script>

@@ -87,6 +87,43 @@ def move():
             ser.write(b'0')
             sleep(0.1)
             return ('', 204)
+        elif request.form['action'] == 'Right':
+            ser.write(b'base_r')
+            sleep(0.1)
+            return ('', 204)
+        elif request.form['action'] == 'Left':
+            ser.write(b'base_l')
+            sleep(0.1)
+            return ('', 204)
+        elif request.form['action'] == 'L_Forward':
+            ser.write(b'ls_f')
+            sleep(0.1)
+            return ('', 204)
+        elif request.form['action'] == 'L_Backwards':
+            ser.write(b'ls_b')
+            sleep(0.1)
+            return ('', 204)
+        elif request.form['action'] == 'U_Forward':
+            ser.write(b'us_f')
+            sleep(0.1)
+            return ('', 204)
+        elif request.form['action'] == 'U_Backwards':
+            ser.write(b'us_b')
+            sleep(0.1)
+            return ('', 204)
+        elif request.form['action'] == 'Fan_Submit':
+            FanSpeed = str(request.form.get('Fan_Speed'))
+            ser.write(b'fan')
+            sleep(0.01)
+            ser.write(bytes(FanSpeed,'utf-8'))
+            sleep(0.1)
+        elif request.form['action'] == 'Water_Submit':
+            WaterTime = str(request.form.get('Water_Time'))
+            ser.write(b'pumb')
+            sleep(0.01)
+            ser.write(bytes(WaterTime,'utf-8'))
+            sleep(0.1)
+            return ('', 204)
         elif request.form['action'] == 'Move':
             BaseAngle = str(request.form.get('Base_Angle'))
             LsAngle = str(request.form.get('LS_Angle'))
