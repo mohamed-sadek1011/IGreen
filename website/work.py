@@ -59,7 +59,7 @@ def gen():
 @login_required
 def sensors():
     global Temperature
-    global Humidity
+    global Water
     global Soil_Moisture
     global Lighting
 
@@ -69,7 +69,7 @@ def sensors():
     Soil_Moisture=(ser.readline().decode('utf-8'))
     sleep(0.25) 
    
-    return render_template("sensors.html",user=current_user, Lighting = Lighting, Humidity = Humidity, Soil_Moisture = Soil_Moisture, Temperature = Temperature)
+    return render_template("sensors.html",user=current_user, Lighting = Lighting, Water = Water, Soil_Moisture = Soil_Moisture, Temperature = Temperature)
 
 @work.route('/arm', methods = ['GET' , 'POST'])
 @login_required
@@ -111,8 +111,7 @@ def move():
             ser.write(b'us_b')
             sleep(0.1)
             return ('', 204)
-        elif request.form['action'] == 'Submit':
-            FanSpeed = str(request.form.get('Fan_Speed'))
+        elif request.form['action'] == 'ON/OFF':
             ser.write(b'fan')
             sleep(0.01)
             ser.write(bytes(FanSpeed,'utf-8'))
