@@ -64,11 +64,14 @@ def sensors():
     global Lighting
 
     ser.write(b'request_sensors')
-    Lighting =(ser.readline().decode('utf-8'))
+    Lighting = (ser.readline().decode('utf-8'))
     sleep(0.25)
-    Soil_Moisture=(ser.readline().decode('utf-8'))
-    sleep(0.25) 
-   
+    Soil_Moisture =(ser.readline().decode('utf-8'))
+    sleep(0.25)
+    Temperature =(ser.readline().decode('utf-8'))
+    sleep(0.25)
+    Water =(ser.readline().decode('utf-8'))
+    sleep(0.25)
     return render_template("sensors.html",user=current_user, Lighting = Lighting, Water = Water, Soil_Moisture = Soil_Moisture, Temperature = Temperature)
 
 @work.route('/arm', methods = ['GET' , 'POST'])
